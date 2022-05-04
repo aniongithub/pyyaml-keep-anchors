@@ -168,6 +168,8 @@ class AliasResolverYamlConstructor(BaseConstructor):
             node.value = int(node.value)
         elif node.tag == 'tag:yaml.org,2002:bool':
             node.value = bool(node.value)
+            # TODO: Fix this in a better way so we can still preserve bool references
+            return node.value
         return build_proxy_from_base(node.value)
 
 
